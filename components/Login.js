@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { attemptLogin } from './store/authReducer';
+import { attemptLogin } from '../store/authReducer';
 import { View, Text, TextInput, Button } from 'react-native';
 import styles from './stylesheet.js';
 

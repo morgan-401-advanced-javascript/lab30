@@ -10,7 +10,7 @@ import {
     editTask,
     deleteTask,
     addTask,
-} from './store/taskReducer';
+} from '../store/taskReducer';
 import * as ImagePicker from 'expo-image-picker';
 
 function TaskList(props) {
