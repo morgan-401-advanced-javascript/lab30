@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { View, ScrollView, Text } from 'react-native';
+import { View, ScrollView, Text, Button, Image } from 'react-native';
 import Task from './Task';
+import PlatformIndicator from './PlatformIndicator';
 import TaskEdit from './TaskEdit';
 import TaskAdd from './TaskAdd';
 import {
@@ -10,11 +11,13 @@ import {
     deleteTask,
     addTask,
 } from './store/taskReducer';
+import * as ImagePicker from 'expo-image-picker';
 
 function TaskList(props) {
-    console.log('TaskList props', props);
     let [edit, setEdit] = useState(null);
     let taskObjects = [];
+
+    let [image, setImage] = useState('');
 
     const launchEditTask = data => {
         setEdit(
@@ -51,19 +54,41 @@ function TaskList(props) {
         );
     }
 
+    const pickImage = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+        });
+
+        if (!result.cancelled) {
+            setImage(result.uri);
+        }
+    };
+
+    console.log(image);
+
     return (
         <ScrollView>
-            <View>
-                <Text>Hello World</Text>
-                <View>{taskObjects}</View>
-                <View>{edit}</View>
-                <TaskAdd
-                    add={data => {
-                        props.dispatch(addTask(data));
-                    }}
+        <View>
+            <PlatformIndicator />
+            <Button title='Pick an Image' onPress={pickImage} />
+            {image ? (
+                <Image
+                style={{ width: 100, height: 100 }}
+                source={{ uri: image }}
                 />
-            </View>
-        </ScrollView>
+                ) : null}
+            <View>{taskObjects}</View>
+            <View>{edit}</View>
+            <TaskAdd
+                add={data => {
+                    props.dispatch(addTask(data));
+                }}
+                close={() => {
+                    setEdit('');
+                }}
+                />
+        </View>
+                </ScrollView>
     );
 }
 

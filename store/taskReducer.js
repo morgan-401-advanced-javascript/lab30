@@ -1,7 +1,15 @@
 import { api } from '../util';
 
 const initialState = {
-    tasks: [],
+    tasks: [
+        {
+            _id: 0,
+            name: 'test',
+            description: 'test description',
+            priority: 2,
+            isCompleted: true,
+        },
+    ],
 };
 
 const getAllTasks = () => {
@@ -133,6 +141,7 @@ const taskReducer = (state = initialState, action) => {
         default:
             break;
     }
+
     return newState;
 };
 

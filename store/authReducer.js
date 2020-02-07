@@ -1,9 +1,11 @@
 import { getAllTasks } from './taskReducer';
 import { api } from '../util';
+import { Buffer } from 'buffer';
 
 const initialState = {
     email: '',
     token: '',
+    password: '',
 };
 
 const attemptLogin = (email, password) => {

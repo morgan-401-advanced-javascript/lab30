@@ -14,6 +14,7 @@ const incomplete = {
 };
 
 /*
+
 <div className={props.isComplete ? 'complete' : 'incomplete'}>
             {props.name ? <p>{props.name}</p> : ''}
             {props.description ? <p>{props.description}</p> : ''}
@@ -48,6 +49,7 @@ const incomplete = {
                 Delete
             </button>
         </div>
+
 */
 
 function Task(props) {

@@ -1,26 +1,17 @@
 import React, { useState } from 'react';
 import { dateFix } from './util';
 import { View, Text, Switch, TextInput, Button } from 'react-native';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 function TaskEdit(props) {
     let [name, setName] = useState(props.task.name);
     let [description, setDescription] = useState(props.task.description);
-    let [priority, setPriority] = useState(props.task.priority);
+    let [priority, setPriority] = props.task.priority
+        ? useState(props.task.priority)
+        : useState(5);
     let [date, setDate] = useState(dateFix(props.task.date));
     let [isComplete, setIsComplete] = useState(props.task.isComplete);
-
-    /* onSubmit={e => {
-                    e.preventDefault();
-                    props.edit({
-                        id: props.task.id,
-                        name,
-                        description,
-                        priority,
-                        date,
-                        isComplete,
-                    });
-                    props.close();
-                }} */
+    let [showDTP, setShowDTP] = useState(false);
 
     let h1 = {
         fontSize: 60,
@@ -42,10 +33,41 @@ function TaskEdit(props) {
             <TextInput value={description} onChangeText={setDescription} />
 
             <Text style={label}>Priority:</Text>
-            <TextInput value={priority} onChangeText={setPriority} />
+            <TextInput
+                value={priority.toString()}
+                keyboardType='numeric'
+                onChangeText={setPriority}
+            />
 
             <Text style={label}>Date:</Text>
-            <TextInput value={date} onChangeText={setDate} />
+            <Button
+                title={date.toString()}
+                onPress={() => {
+                    setShowDTP(true);
+                }}
+            />
+
+            {showDTP ? (
+                <View>
+                    <DateTimePicker
+                        value={new Date(date)}
+                        mode='date'
+                        is24Hour={true}
+                        display='default'
+                        onChange={(e, date) => {
+                            setDate(dateFix(date));
+                        }}
+                    />
+                    <Button
+                        title='confirm'
+                        onPress={() => {
+                            setShowDTP(false);
+                        }}
+                    />
+                </View>
+            ) : (
+                <View></View>
+            )}
 
             <Text style={label}>Is Complete:</Text>
             <Switch value={isComplete} onChange={setIsComplete} />
