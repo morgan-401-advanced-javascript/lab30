@@ -3,12 +3,13 @@
 ### Author: Morgan T Shaw
 
 ### Links and Resources
-* [submission PR](http://xyz.com)
+* [submission PR](https://github.com/morgan-401-advanced-javascript/lab30/pull/1)
 
 ### Setup
 
 #### Running the app
 * `npm start`
+ 
 
 #### UML
-Link to an image of the UML for your application and response to events
+![uml](./assets/lab30uml.jpg)

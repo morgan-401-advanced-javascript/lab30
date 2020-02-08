@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import { dateFix } from './util';
 import { View, Text, Switch, TextInput, Button } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
-
+/**
+ * @function TaskEdit this allows us to edit existing tasks in the database
+ * @param {object} props 
+ */
 function TaskEdit(props) {
     let [name, setName] = useState(props.task.name);
     let [description, setDescription] = useState(props.task.description);

@@ -11,7 +11,9 @@ const initialState = {
         },
     ],
 };
-
+/**
+ * @function getAllTasks is anonymous function that will call and return the tasks in the database for a user
+ */
 const getAllTasks = () => {
     return async (dispatch, getState) => {
         let req = api + '/all-tasks';
@@ -30,7 +32,11 @@ const getAllTasks = () => {
         } else dispatch({ type: 'API_FAIL', data: response });
     };
 };
-
+/**
+ * @function toggleTaskComplete this will udpate the status of the task in the database
+ * @param {id} id 
+ * @param {object} currentState 
+ */
 const toggleTaskComplete = (id, currentState) => {
     return async (dispatch, getState) => {
         let req = api;
@@ -52,7 +58,10 @@ const toggleTaskComplete = (id, currentState) => {
         else dispatch({ type: 'API_FAIL', data: response });
     };
 };
-
+/**
+ * @function editTask this will update the task in the database
+ * @param {object} task 
+ */
 const editTask = task => {
     return async (dispatch, getState) => {
         let req = api + '/update-task/' + task.id;
@@ -77,7 +86,10 @@ const editTask = task => {
         else dispatch({ type: 'API_FAIL', data: response });
     };
 };
-
+/**
+ * @function addTask will add a task to the database
+ * @param {object} task 
+ */
 const addTask = task => {
     return async (dispatch, getState) => {
         let req = api + '/add-task';
@@ -107,7 +119,10 @@ const addTask = task => {
         else dispatch({ type: 'API_FAIL', data: response });
     };
 };
-
+/**
+ * @function deleteTask deletes a task from the database
+ * @param {id} taskID 
+ */
 const deleteTask = taskID => {
     return async (dispatch, getState) => {
         let req = api + '/delete-task/' + taskID;
@@ -124,7 +139,11 @@ const deleteTask = taskID => {
         else dispatch({ type: 'API_FAIL', data: response });
     };
 };
-
+/**
+ * @function taskReducer dispatchs actions for tasks
+ * @param {object} state 
+ * @param {function} action 
+ */
 const taskReducer = (state = initialState, action) => {
     let newState = { ...state };
 
