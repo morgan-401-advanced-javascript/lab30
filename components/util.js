@@ -1,6 +1,9 @@
 // replace this url with your personal API url
 export const api = 'https://js401n14-todo-server.herokuapp.com';
-
+/**
+ * @function dateFix helper function that correctly displays the date
+ * @param {date} date 
+ */
 export const dateFix = date => {
     let dateObj = new Date(date);
     console.log(dateObj);

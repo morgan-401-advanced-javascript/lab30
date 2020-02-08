@@ -3,7 +3,10 @@ import { connect } from 'react-redux';
 import { attemptLogin } from '../store/authReducer';
 import { View, Text, TextInput, Button } from 'react-native';
 import styles from './stylesheet.js';
-
+/**
+ * @function Login form that takes in an email and password to authenticate and get a token
+ * @param {object} props 
+ */
 function Login(props) {
     let [email, setEmail] = useState('');
     let [password, setPassword] = useState('');

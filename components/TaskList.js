@@ -12,9 +12,12 @@ import {
     addTask,
 } from '../store/taskReducer';
 import * as ImagePicker from 'expo-image-picker';
-
+/**
+ * @function TaskList This utilizes the TaskEdit, Task, & AddTask components and displays them on the page
+ * @param {object} props 
+ */
 function TaskList(props) {
-    let [edit, setEdit] = useState(null);
+    let [edit, setEdit] = useState('');
     let taskObjects = [];
 
     let [image, setImage] = useState('');

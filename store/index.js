@@ -2,7 +2,9 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import authReducer from './authReducer';
 import taskReducer from './taskReducer';
-
+/**
+ * combines our reducers
+ */
 const reducer = combineReducers({
     auth: authReducer,
     task: taskReducer,

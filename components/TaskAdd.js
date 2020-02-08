@@ -3,7 +3,10 @@ import { dateFix } from './util';
 import { View, Text, Switch, TextInput, Button } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
-
+/**
+ * @function TaskAdd this will allow us to add tasks to our database
+ * @param {object} props 
+ */
 function TaskAdd(props) {
 
     let currentDate = new Date().toLocaleDateString();

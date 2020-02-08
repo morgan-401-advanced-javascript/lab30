@@ -7,7 +7,12 @@ const initialState = {
     token: '',
     password: '',
 };
-
+/**
+ * @function attemptLogin this will call the database and compare or create a user in the database. 
+ * @param {email} email 
+ * @param {string} password 
+ * @returns token
+ */
 const attemptLogin = (email, password) => {
     return async dispatch => {
         if (email.trim() === '' || password.trim() === '') {
